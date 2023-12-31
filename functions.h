@@ -50,7 +50,7 @@ public:
     void setVardas(const string& vardas){vardas_ = vardas;}
     void setPavarde(const string& pavarde){pavarde_ = pavarde;}
     void setPazymiai(const vector<double>& pazymiai){
-        sort(pazymiai.begin(), pazymiai.end());
+//        sort(pazymiai.begin(), pazymiai.end());
         paz = pazymiai;
     }
     void setRez()
@@ -61,7 +61,6 @@ public:
 
     void setEgz(const int& egzas){egzaminas_ = egzas;}
 
-    double galBalas(double (*) (vector<double>) = mediana) const;
     std::istream& readStudent(std::istream&);
 };
 

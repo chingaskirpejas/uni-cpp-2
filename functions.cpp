@@ -1,14 +1,10 @@
 #include "my_lib.h"
 #include "functions.h"
 
-//inputo funkcija
-
 bool pagal_varda(Studentas& a, Studentas& b)
 {
     return a.vardas()<b.vardas();
 }
-
-
 
 void manual_input(Studentas& laik)
 {
@@ -56,12 +52,6 @@ void input_loop(Studentas& laik)
 
 }
 
-// funkcija grazinanti mediana
-float mediana(vector <int> pazymiai)
-{
-
-}
-
 void printas(vector <Studentas>& sarasas)
 {
     sort(sarasas.begin(), sarasas.end(), pagal_varda);
@@ -80,7 +70,8 @@ void printas(vector <Studentas>& sarasas)
         cout<<"---------------------------------------------------------------------------"<<endl;
         for(auto &stud:sarasas)
         {
-            cout<<setw(20)<<stud.vardas()<<" "<<setw(20)<<stud.pavarde()<<" "<<setprecision(2)<<setw(10)<<vidurkis(stud.paz, stud.egz)<<" "<<setw(10)<<&stud<<endl;
+            cout<<setw(20)<<stud.vardas()<<" "<<setw(20)<<stud.pavarde()<<" "<<setprecision(2)<<setw(10)<<
+            stud.getVidurkis()<<" "<<setw(10)<<&stud<<endl;
         }
     }
     else if(decision == "m" || decision == "M")
@@ -89,7 +80,8 @@ void printas(vector <Studentas>& sarasas)
         cout<<"---------------------------------------------------------------------------"<<endl;
         for(auto &stud:sarasas)
         {
-            cout<<setw(20)<<stud.vardas()<<" "<<setw(20)<<stud.pavarde()<<" "<<setprecision(2)<<setw(10)<<mediana(stud.paz)<<" "<<setw(10)<<&stud<<endl;
+            cout<<setw(20)<<stud.vardas()<<" "<<setw(20)<<stud.pavarde()<<" "<<setprecision(2)<<setw(10)<<
+            stud.getMediana()<<" "<<setw(10)<<&stud<<endl;
         }
     }
 }
@@ -112,7 +104,8 @@ void printas_list(list<Studentas>& sarasas)
         cout<<"---------------------------------------------------------------------------"<<endl;
         for(auto &stud:sarasas)
         {
-            cout<<setw(20)<<stud.vardas()<<" "<<setw(20)<<stud.pavarde()<<" "<<setprecision(2)<<setw(10)<<vidurkis(stud.paz, stud.egz)<<" "<<setw(10)<<&stud<<endl;
+            cout<<setw(20)<<stud.vardas()<<" "<<setw(20)<<stud.pavarde()<<" "<<setprecision(2)<<setw(10)<<
+            stud.getVidurkis()<<" "<<setw(10)<<&stud<<endl;
         }
     }
     else if(decision == "m" || decision == "M")
@@ -121,7 +114,8 @@ void printas_list(list<Studentas>& sarasas)
         cout<<"---------------------------------------------------------------------------"<<endl;
         for(auto &stud:sarasas)
         {
-            cout<<setw(20)<<stud.vardas()<<" "<<setw(20)<<stud.pavarde()<<" "<<setprecision(2)<<setw(10)<<mediana(stud.paz)<<" "<<setw(10)<<&stud<<endl;
+            cout<<setw(20)<<stud.vardas()<<" "<<setw(20)<<stud.pavarde()<<" "<<setprecision(2)<<setw(10)<<
+            stud.getMediana()<<" "<<setw(10)<<&stud<<endl;
         }
     }
 }
