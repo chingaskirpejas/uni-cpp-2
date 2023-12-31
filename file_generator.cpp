@@ -9,31 +9,43 @@ void generate_files()
     cout<<"Kiek pazymiu tures mokinys?"<<endl;
     string paz_ans;
     cin>>paz_ans;
+    cout<<"Generuoti failus (g), ar testuoti duomenu konteinerius(t)?"<<endl;
+    string atsakymas;
+    cin>>atsakymas;
+    while (atsakymas != "G" && atsakymas != "g" && atsakymas != "T" && atsakymas != "t")
+    {
+        cout<<"Neteisingas pasirinkimas, bandykite dar karta"<<endl;
+        cin>>atsakymas;
+    }
+    if(atsakymas == "G" || atsakymas == "g")
+    {
+        cout<<"Kuriami failai...";
+        create_x(1000, stoi(paz_ans));
+        create_x(10000, stoi(paz_ans));
+        create_x(100000, stoi(paz_ans));
+        create_x(1000000, stoi(paz_ans));
+        create_x(10000000, stoi(paz_ans));
+    }
+    else
+    {
+        cout<<"Testuojamas vector tipo konteinerio veikimas"<<endl;
 
-    cout<<"Kuriami failai..."<<endl;
-    create_x(1000, stoi(paz_ans));
-    create_x(10000, stoi(paz_ans));
-    create_x(100000, stoi(paz_ans));
-    create_x(1000000, stoi(paz_ans));
-    create_x(10000000, stoi(paz_ans));
-    cout<<"--------------------------------------------------"<<endl<<endl;
-    cout<<"Testuojamas vector tipo konteinerio veikimas"<<endl;
-    cout<<"--------------------------------------------------"<<endl<<endl;
-    run_vector_test(1000, stoi(paz_ans));
-    run_vector_test(10000, stoi(paz_ans));
-    run_vector_test(100000, stoi(paz_ans));
-    run_vector_test(1000000, stoi(paz_ans));
-    run_vector_test(10000000, stoi(paz_ans));
-    cout<<"--------------------------------------------------"<<endl<<endl;
-    cout<<"Testuojamas list tipo konteinerio veikimas"<<endl;
-    cout<<"--------------------------------------------------"<<endl<<endl;
-    run_list_test(1000, stoi(paz_ans));
-    run_list_test(10000, stoi(paz_ans));
-    run_list_test(100000, stoi(paz_ans));
-    run_list_test(1000000, stoi(paz_ans));
-    run_list_test(10000000, stoi(paz_ans));
+        run_vector_test(1000, stoi(paz_ans));
+        run_vector_test(10000, stoi(paz_ans));
+        run_vector_test(100000, stoi(paz_ans));
+        run_vector_test(1000000, stoi(paz_ans));
+        run_vector_test(10000000, stoi(paz_ans));
 
-    cout<<endl<<"Testavimas baigtas"<<endl;
+        cout<<"Testuojamas list tipo konteinerio veikimas"<<endl;
+
+        run_list_test(1000, stoi(paz_ans));
+        run_list_test(10000, stoi(paz_ans));
+        run_list_test(100000, stoi(paz_ans));
+        run_list_test(1000000, stoi(paz_ans));
+        run_list_test(10000000, stoi(paz_ans));
+
+        cout<<endl<<"Testavimas baigtas"<<endl;
+    }
 }
 
 
@@ -130,7 +142,6 @@ vector <Studentas> read_file(int kiekis, int nd_dydis)
 
     if(file.is_open())
     {
-
         getline(file, line);
 
         while(getline(file, line))
@@ -210,7 +221,7 @@ void write_to_file(int kiekis, vector <Studentas>& vargsiukai, vector <Studentas
     string kiek = to_string(kiekis);
 
     ofstream outfile(kiek+"out1.txt");
-    outfile<<"Vardas     Pavarde   Galutinis";
+    outfile<<"Vardas     Pavarde   Galutinis"<<endl;
 
     for(const auto& studentas: vargsiukai)
     {
@@ -220,7 +231,7 @@ void write_to_file(int kiekis, vector <Studentas>& vargsiukai, vector <Studentas
 
 
     ofstream outfile2(kiek+"out2.txt");
-    outfile2<<"Vardas     Pavarde   Galutinis";
+    outfile2<<"Vardas     Pavarde   Galutinis"<<endl;;
 
     for(const auto& studentas: kietekai)
     {
