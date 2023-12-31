@@ -56,7 +56,7 @@ void run_list_test(int amount, int paz_kiek)
 
 list<Studentas> read_file_list(int kiekis, int nd_dydis)
 {
-    ifstream file("C:\\Users\\Daniilas\\CLionProjects\\uni_cpp\\cmake-build-debug\\"+to_string(kiekis) + ".txt");
+    ifstream file("../"+to_string(kiekis) + ".txt");
     string line;
 
     list<Studentas> visi_stud;

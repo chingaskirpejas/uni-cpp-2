@@ -134,7 +134,7 @@ void create_x(int amount, int paz_kiek)
 
 vector <Studentas> read_file(int kiekis, int nd_dydis)
 {
-    ifstream file("C:\\Users\\Daniilas\\CLionProjects\\uni_cpp\\cmake-build-debug\\"+to_string(kiekis) + ".txt");
+    ifstream file("../"+to_string(kiekis) + ".txt");
     string line;
 
     vector <Studentas> visi_stud;
@@ -213,9 +213,6 @@ void atrinkimas3(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiu
     vargsiukai.insert(vargsiukai.end(), partition_point, visi_studentai.end());
     visi_studentai.resize(std::distance(visi_studentai.begin(), partition_point));
 }
-
-
-
 
 void write_to_file(int kiekis, vector <Studentas>& vargsiukai, vector <Studentas>& kietekai)
 {

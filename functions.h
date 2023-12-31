@@ -64,43 +64,13 @@ public:
 
     void setEgz(const int& egzas){egzaminas_ = egzas;}
 
-//    std::istream& readStudent(std::istream& stream)
-//    {
-//        vector <string> stulpeliai;
-//        string stulp;
-//        while(getline(file, line))
-//        {
-//            Studentas laik;
-//            istringstream iss(line);
-//
-//
-//            while (stream>>stulp)
-//            {
-//                stulpeliai.push_back(stulp);
-//            }
-//
-//            laik.setVardas(stulpeliai[0]);
-//            laik.setPavarde(stulpeliai[1]);
-//            vector<double> pazymiai;
-//            for(int i=2; i<nd_dydis; i++)
-//            {
-//                pazymiai.push_back(stoi(stulpeliai[i]));
-//            }
-//            laik.setEgz(stoi(stulpeliai[stulpeliai.size()-1]));
-//            laik.setPazymiai(pazymiai);
-//            studentai.push_back(laik);
-//            laik.clearPazymiai();
-//
-//    };
-
+    ~Studentas(){}
 };
 
 list<Studentas> list_inputas();
 vector <Studentas> inputas();
 void printas(vector <Studentas>& sarasas);
 void printas_list(list<Studentas>& sarasas);
-float vidurkis(vector <int> pazymiai, int egzaminas);
-float mediana(vector <int> pazymiai);
 void input_loop(Studentas& laik);
 void manual_input(Studentas& laik);
 void random_input(Studentas& laik);

@@ -131,7 +131,6 @@ list<Studentas> list_inputas()
             cout<<"Iveskite egzamina: ";
             cin>>egzas;
             laik.setEgz(std::stod(egzas));
-
         }
         studentai.push_back(laik);
         laik.clearPazymiai();
