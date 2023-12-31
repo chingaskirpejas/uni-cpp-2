@@ -23,13 +23,13 @@ void random_input(Studentas& laik)
     std::random_device rd;
     std::mt19937 engine(rd());
     std::uniform_int_distribution<> dist(1, 10);
-
-    srand(time(0));
-    for(int i=0; i<10; i++) {
-        int j = rand() % 10 + 1;
-        laik.paz.push_back(j);
+    vector<double> pazymiai;
+    for(int i=0; i<10; i++)
+    {
+        pazymiai.push_back((dist(engine)));
     }
-    laik.egz = rand() % 10 + 1;
+    laik.setPazymiai(pazymiai);
+    laik.setEgz(dist(engine));
 }
 
 void input_loop(Studentas& laik)
@@ -55,13 +55,6 @@ void input_loop(Studentas& laik)
     laik.setPazymiai(pazymiai);
 
 }
-
-// funkcija apskaiciuojanti vidurki ir grazinanti ji
-float vidurkis(vector <int> pazymiai, int egzaminas)
-{
-
-}
-
 
 // funkcija grazinanti mediana
 float mediana(vector <int> pazymiai)
