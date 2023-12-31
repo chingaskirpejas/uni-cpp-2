@@ -152,9 +152,9 @@ vector <Studentas> read_file(int kiekis, int nd_dydis)
                 pazymiai.push_back(stoi(stulpeliai[i]));
             }
             laik.setEgz(std::stod(stulpeliai[stulpeliai.size()-1]));
-            laik.rez = vidurkis(laik.paz, laik.egz);
+            laik.setRez();
             visi_stud.push_back(laik);
-            laik.clearPazymiai()
+            laik.clearPazymiai();
         }
         file.close();
 
@@ -171,7 +171,7 @@ void atrinkimas(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiuk
 {
     for(const auto& studentas: visi_studentai)
     {
-        if (studentas.rez < 5.0)
+        if (studentas.getRez() < 5.0)
         {
             vargsiukai.push_back(studentas);
         } else
@@ -183,7 +183,7 @@ void atrinkimas(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiuk
 void atrinkimas2(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiukai)
 {
     auto criteria = [](const Studentas& obj) {
-        return obj.rez < 5.0;
+        return obj.getRez() < 5.0;
     };
     auto i = std::partition(visi_studentai.begin(), visi_studentai.end(), criteria);
 
@@ -195,7 +195,7 @@ void atrinkimas2(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiu
 void atrinkimas3(vector <Studentas>& visi_studentai, vector <Studentas>& vargsiukai)
 {
     auto partition_point = std::partition(visi_studentai.begin(), visi_studentai.end(), [](const Studentas& s) {
-        return s.rez >= 5.0;
+        return s.getRez() >= 5.0;
     });
 
     vargsiukai.insert(vargsiukai.end(), partition_point, visi_studentai.end());
@@ -214,7 +214,7 @@ void write_to_file(int kiekis, vector <Studentas>& vargsiukai, vector <Studentas
 
     for(const auto& studentas: vargsiukai)
     {
-        outfile<<studentas.vard<<studentas.pav<<studentas.rez<<endl;
+        outfile<<studentas.vardas()<<studentas.pavarde()<<studentas.getRez()<<endl;
     }
     outfile.close();
 
@@ -224,7 +224,7 @@ void write_to_file(int kiekis, vector <Studentas>& vargsiukai, vector <Studentas
 
     for(const auto& studentas: kietekai)
     {
-        outfile2<<studentas.vard<<studentas.pav<<studentas.rez<<endl;
+        outfile2<<studentas.vardas()<<studentas.pavarde()<<studentas.getRez()<<endl;
     }
     outfile2.close();
 }

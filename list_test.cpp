@@ -85,7 +85,7 @@ list<Studentas> read_file_list(int kiekis, int nd_dydis)
                 pazymiai.push_back(stoi(stulpeliai[i]));
             }
             laik.setEgz(std::stod(stulpeliai[stulpeliai.size()-1]));
-            laik.rez = vidurkis(laik.paz, laik.egz);
+            laik.setRez();
             visi_stud.push_back(laik);
             laik.clearPazymiai();
         }
@@ -103,7 +103,7 @@ void list_atrinkimas(list<Studentas>& visi_studentai, list<Studentas>& vargsiuka
 {
     for(const auto& studentas: visi_studentai)
     {
-        if (studentas.rez < 5.0)
+        if (studentas.getRez() < 5.0)
         {
             vargsiukai.push_back(studentas);
         } else
@@ -116,7 +116,7 @@ void list_atrinkimas(list<Studentas>& visi_studentai, list<Studentas>& vargsiuka
 void list_atrinkimas2(list <Studentas>& visi_stud, list <Studentas>& vargsiukai)
 {
     auto criteria = [](const Studentas& obj){
-        return obj.rez <5.0;
+        return obj.getRez() <5.0;
     };
 
     std::remove_copy_if(visi_stud.begin(), visi_stud.end(), std::back_inserter(vargsiukai), criteria);
@@ -127,7 +127,7 @@ void list_atrinkimas2(list <Studentas>& visi_stud, list <Studentas>& vargsiukai)
 void list_atrinkimas3(list <Studentas>& visi_studentai, list <Studentas>& vargsiukai)
 {
     for(auto i = visi_studentai.begin(); i != visi_studentai.end();) {
-        if (i->rez < 5.0) {
+        if (i->getRez() < 5.0) {
             vargsiukai.push_back(*i);
             i = visi_studentai.erase(i);
         } else {
@@ -145,7 +145,7 @@ void write_list_to_file(int kiekis, list<Studentas>& vargsiukai, list<Studentas>
 
     for(const auto& studentas: vargsiukai)
     {
-        outfile<<studentas.vard<<studentas.pav<<studentas.rez<<endl;
+        outfile<<studentas.vardas()<<studentas.pavarde()<<studentas.getRez()<<endl;
     }
     outfile.close();
 
@@ -155,7 +155,7 @@ void write_list_to_file(int kiekis, list<Studentas>& vargsiukai, list<Studentas>
 
     for(const auto& studentas: kietekai)
     {
-        outfile2<<studentas.vard<<studentas.pav<<studentas.rez<<endl;
+        outfile2<<studentas.vardas()<<studentas.pavarde()<<studentas.getRez()<<endl;
     }
     outfile2.close();
 }
