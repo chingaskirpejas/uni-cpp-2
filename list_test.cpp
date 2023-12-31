@@ -84,6 +84,7 @@ list<Studentas> read_file_list(int kiekis, int nd_dydis)
             {
                 pazymiai.push_back(stoi(stulpeliai[i]));
             }
+            laik.setPazymiai(pazymiai);
             laik.setEgz(std::stod(stulpeliai[stulpeliai.size()-1]));
             laik.setRez();
             visi_stud.push_back(laik);
@@ -145,7 +146,7 @@ void write_list_to_file(int kiekis, list<Studentas>& vargsiukai, list<Studentas>
 
     for(const auto& studentas: vargsiukai)
     {
-        outfile<<studentas.vardas()<<studentas.pavarde()<<studentas.getRez()<<endl;
+        outfile<<studentas.vardas()<<" "<<studentas.pavarde()<<" "<<studentas.getRez()<<endl;
     }
     outfile.close();
 
@@ -155,7 +156,7 @@ void write_list_to_file(int kiekis, list<Studentas>& vargsiukai, list<Studentas>
 
     for(const auto& studentas: kietekai)
     {
-        outfile2<<studentas.vardas()<<studentas.pavarde()<<studentas.getRez()<<endl;
+        outfile2<<studentas.vardas()<<" "<<studentas.pavarde()<<" "<<studentas.getRez()<<endl;
     }
     outfile2.close();
 }
