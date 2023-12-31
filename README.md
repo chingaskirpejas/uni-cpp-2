@@ -1,4 +1,4 @@
-# Pirma užduotis (v1.0)
+# Pirma užduotis (v1.1)
 1. Šioje programoje naudojami duomenys susije su studentais - _vardas, pavarde, pažymiai, egzamino įvertinimas_
 2. Vartotojas turi keturias parinktis darbui su duomenimis:
  	- Duomenų įvedimas ranka
@@ -68,6 +68,15 @@ List konteinerio atveju <br>
 ### Analizės rezultatai
 
 Pagal turimus duomenis matome, jog /*Vector*/ konteinerio atveju **antra** strategija yra efektyvesne su didesniais duomenų kiekiais. Taip pat matome jog /*List*/ konteinerio atveju, efektyviausia strategija yra **trečia**.
+
+
+### Flagu testavimas
+
+| Testuojamas failas   | o1 Vector | o1 List | o2 Vector | o2 List | o3 Vector | o3 List |
+|-----------------------|-----------|---------|-----------|---------|-----------|---------|
+| 100000.txt            | 9 ms      | 8 ms    | 9 ms      | 9 ms    | 9 ms      | 8 ms    |
+| 1000000.txt           | 99 ms     | 95 ms   | 138 ms    | 93 ms   | 99 ms     | 93 ms   |
+
 
 ## Kompiuterio specifikacijos
 CPU: Intel Core i5-6500 @ 3.2GHz<br>

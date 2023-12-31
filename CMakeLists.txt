@@ -6,10 +6,14 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(zuba
         main.cpp
         functions.cpp
-        functions.h
-        my_lib.h
         read_from_file.cpp
         file_generator.cpp
-        file_generator.h
         list_test.cpp
-        list_test.h)
+)
+
+target_include_directories(zuba PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+# O1 optimizacijos lygis
+target_compile_options(zuba PRIVATE -O3)
