@@ -11,7 +11,7 @@ private:
     double rez;
 
 public:
-    Studentas() : egzaminas_(0) { }  // default konstruktorius
+    Studentas() : egzaminas_(0), rez(0) {}  // default konstruktorius
     Studentas(std::istream& is);
 
     void clearPazymiai(){paz.clear();}
@@ -31,19 +31,22 @@ public:
         return rezultatas;
     }
     inline double getMediana() const {
-        float mediana;
-        size_t size = paz.size();
-        if (size % 2 == 0)
-        {
-            mediana = static_cast<float>(paz[size / 2 - 1] + paz[size / 2]) / 2;
-        }
-        else
-        {
-            mediana = paz[size / 2];
+
+        std::vector<double> sortedPaz = paz;
+        std::sort(sortedPaz.begin(), sortedPaz.end());
+
+        double mediana;
+        size_t size = sortedPaz.size();
+
+        if (size % 2 == 0) {
+            mediana = static_cast<double>(sortedPaz[size / 2 - 1] + sortedPaz[size / 2]) / 2.0;
+        } else {
+            mediana = sortedPaz[size / 2];
         }
 
         return mediana;
     }
+
     inline double getRez() const {return rez;}
 
     // seteriai
