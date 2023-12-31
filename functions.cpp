@@ -5,7 +5,7 @@
 
 bool pagal_varda(Studentas& a, Studentas& b)
 {
-    return a.vard<b.vard;
+    return a.vardas()<b.vardas();
 }
 
 
@@ -20,6 +20,10 @@ void manual_input(Studentas& laik)
 
 void random_input(Studentas& laik)
 {
+    std::random_device rd;
+    std::mt19937 engine(rd());
+    std::uniform_int_distribution<> dist(1, 10);
+
     srand(time(0));
     for(int i=0; i<10; i++) {
         int j = rand() % 10 + 1;
@@ -30,6 +34,7 @@ void random_input(Studentas& laik)
 
 void input_loop(Studentas& laik)
 {
+    vector<double> pazymiai;
     string paz;
     cin.ignore();
     while(true)
@@ -39,46 +44,29 @@ void input_loop(Studentas& laik)
         {
             break;
         }
-        int in = std::stoi(paz);
+        int in = std::stod(paz);
         if(in<0 || in>10)
         {
             cout<<"Ivedete bloga skaiciu";
             continue;
         }
-        laik.paz.push_back(in);
+        pazymiai.push_back(in);
     }
+    laik.setPazymiai(pazymiai);
+
 }
 
 // funkcija apskaiciuojanti vidurki ir grazinanti ji
 float vidurkis(vector <int> pazymiai, int egzaminas)
 {
-    float rezultatas=0;
-    for (auto &a: pazymiai)
-    {
-        rezultatas += a;
-    }
-    rezultatas = (rezultatas/pazymiai.size())*0.4; // pazymiu vidurkis
-    rezultatas = rezultatas + (egzaminas*0.6); // pridedam egzamino svori/dali
-    return rezultatas;
+
 }
 
 
 // funkcija grazinanti mediana
 float mediana(vector <int> pazymiai)
 {
-    float mediana;
-    sort(pazymiai.begin(), pazymiai.end());
-    size_t size = pazymiai.size();
-    if (size % 2 == 0)
-    {
-        mediana = static_cast<float>(pazymiai[size / 2 - 1] + pazymiai[size / 2]) / 2;
-    }
-    else
-    {
-        mediana = pazymiai[size / 2];
-    }
 
-    return mediana;
 }
 
 void printas(vector <Studentas>& sarasas)
@@ -99,7 +87,7 @@ void printas(vector <Studentas>& sarasas)
         cout<<"---------------------------------------------------------------------------"<<endl;
         for(auto &stud:sarasas)
         {
-            cout<<setw(20)<<stud.vard<<" "<<setw(20)<<stud.pav<<" "<<setprecision(2)<<setw(10)<<vidurkis(stud.paz, stud.egz)<<" "<<setw(10)<<&stud<<endl;
+            cout<<setw(20)<<stud.vardas()<<" "<<setw(20)<<stud.pavarde()<<" "<<setprecision(2)<<setw(10)<<vidurkis(stud.paz, stud.egz)<<" "<<setw(10)<<&stud<<endl;
         }
     }
     else if(decision == "m" || decision == "M")
@@ -108,7 +96,7 @@ void printas(vector <Studentas>& sarasas)
         cout<<"---------------------------------------------------------------------------"<<endl;
         for(auto &stud:sarasas)
         {
-            cout<<setw(20)<<stud.vard<<" "<<setw(20)<<stud.pav<<" "<<setprecision(2)<<setw(10)<<mediana(stud.paz)<<" "<<setw(10)<<&stud<<endl;
+            cout<<setw(20)<<stud.vardas()<<" "<<setw(20)<<stud.pavarde()<<" "<<setprecision(2)<<setw(10)<<mediana(stud.paz)<<" "<<setw(10)<<&stud<<endl;
         }
     }
 }
@@ -131,7 +119,7 @@ void printas_list(list<Studentas>& sarasas)
         cout<<"---------------------------------------------------------------------------"<<endl;
         for(auto &stud:sarasas)
         {
-            cout<<setw(20)<<stud.vard<<" "<<setw(20)<<stud.pav<<" "<<setprecision(2)<<setw(10)<<vidurkis(stud.paz, stud.egz)<<" "<<setw(10)<<&stud<<endl;
+            cout<<setw(20)<<stud.vardas()<<" "<<setw(20)<<stud.pavarde()<<" "<<setprecision(2)<<setw(10)<<vidurkis(stud.paz, stud.egz)<<" "<<setw(10)<<&stud<<endl;
         }
     }
     else if(decision == "m" || decision == "M")
@@ -140,7 +128,7 @@ void printas_list(list<Studentas>& sarasas)
         cout<<"---------------------------------------------------------------------------"<<endl;
         for(auto &stud:sarasas)
         {
-            cout<<setw(20)<<stud.vard<<" "<<setw(20)<<stud.pav<<" "<<setprecision(2)<<setw(10)<<mediana(stud.paz)<<" "<<setw(10)<<&stud<<endl;
+            cout<<setw(20)<<stud.vardas()<<" "<<setw(20)<<stud.pavarde()<<" "<<setprecision(2)<<setw(10)<<mediana(stud.paz)<<" "<<setw(10)<<&stud<<endl;
         }
     }
 }

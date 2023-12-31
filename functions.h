@@ -1,4 +1,3 @@
-
 #ifndef UNI_CPP_FUNCTIONS_H
 #define UNI_CPP_FUNCTIONS_H
 
@@ -8,16 +7,53 @@ private:
     std::string vardas_;
     std::string pavarde_;
     double egzaminas_;
-    std::vector<double> nd_;
+    std::vector<double> paz;
 
 public:
     Studentas() : egzaminas_(0) { }  // default konstruktorius
     Studentas(std::istream& is);
-    inline std::string vardas() const { return vardas_; }    // get'eriai, inline
-    inline std::string pavarde() const { return pavarde_; }  // get'eriai, inline
-    double galBalas(double (*) (vector<double>) = mediana) const;  // get'eriai
-    std::istream& readStudent(std::istream&);  // set'eriai
+
+    // geteriai
+    inline std::string vardas() const {return vardas_;}
+    inline std::string pavarde() const {return pavarde_;}
+    inline double egzaminas() const {return egzaminas_;}
+    inline double getVidurkis() const{
+        float rezultatas=0;
+        for (auto &a: paz)
+        {
+            rezultatas += a;
+        }
+        rezultatas = (rezultatas/paz.size())*0.4; // pazymiu vidurkis
+        rezultatas = rezultatas + (egzaminas_*0.6); // pridedam egzamino svori/dali
+        return rezultatas;
+    }
+    inline double getMediana() const {
+        float mediana;
+        size_t size = paz.size();
+        if (size % 2 == 0)
+        {
+            mediana = static_cast<float>(paz[size / 2 - 1] + paz[size / 2]) / 2;
+        }
+        else
+        {
+            mediana = paz[size / 2];
+        }
+
+        return mediana;
+    }
+    // seteriai
+    void setVardas(const string& vardas){vardas_ = vardas;}
+    void setPavarde(const string& pavarde){pavarde_ = pavarde;}
+    void setPazymiai(const vector<double>& pazymiai){
+        sort(pazymiai.begin(), pazymiai.end());
+        paz = pazymiai;
+    }
+    void setEgz(const int& egzas){egzaminas_ = egzas;}
+
+    double galBalas(double (*) (vector<double>) = mediana) const;
+    std::istream& readStudent(std::istream&);
 };
+
 list<Studentas> list_inputas();
 vector <Studentas> inputas();
 void printas(vector <Studentas>& sarasas);

@@ -70,20 +70,24 @@ vector <Studentas> inputas()
 
     for(int i=0; i<studentu_sk; i++)
     {
+        string var, pav;
         cout<<"Studento vardas ir pavarde: ";
-        cin>> laik.vard >> laik.pav;
+        cin >> var >> pav;
+        laik.setPavarde(pav);
+        laik.setVardas(var);
         cout<<"Pasirinkite kaip norite ivesti studento pazymius: autogeneracija(rasykite a), rankiniu budu(rasykite r):"<<endl;
         string choice;
         cin>>choice;
         if(choice == "a" || choice == "A")
         {
             random_input(laik);
-
         }
         else if(choice == "r" || choice == "R") {
+            string egzas;
             manual_input(laik);
             cout<<"Iveskite egzamina: ";
-            cin>>laik.egz;
+            cin>>egzas;
+            laik.setEgz(std::stod(egzas));
         }
         studentai.push_back(laik);
         laik.paz.clear();
