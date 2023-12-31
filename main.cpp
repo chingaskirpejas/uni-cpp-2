@@ -90,7 +90,7 @@ vector <Studentas> inputas()
             laik.setEgz(std::stod(egzas));
         }
         studentai.push_back(laik);
-        laik.paz.clear();
+        laik.clearPazymiai();
     }
 
     return studentai;
@@ -134,7 +134,7 @@ list<Studentas> list_inputas()
 
         }
         studentai.push_back(laik);
-        laik.paz.clear();
+        laik.clearPazymiai();
     }
 
     return studentai;

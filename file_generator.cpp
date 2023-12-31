@@ -144,16 +144,17 @@ vector <Studentas> read_file(int kiekis, int nd_dydis)
                 stulpeliai.push_back(stulp);
             }
 
-            laik.vard = stulpeliai[0];
-            laik.pav = stulpeliai[1];
+            laik.setVardas(stulpeliai[0]);
+            laik.setPavarde(stulpeliai[1]);
+            vector<double> pazymiai;
             for(int i=2; i<nd_dydis; i++)
             {
-                laik.paz.push_back(stoi(stulpeliai[i]));
+                pazymiai.push_back(stoi(stulpeliai[i]));
             }
-            laik.egz = stoi(stulpeliai[stulpeliai.size()-1]);
+            laik.setEgz(std::stod(stulpeliai[stulpeliai.size()-1]));
             laik.rez = vidurkis(laik.paz, laik.egz);
             visi_stud.push_back(laik);
-            laik.paz.clear();
+            laik.clearPazymiai()
         }
         file.close();
 

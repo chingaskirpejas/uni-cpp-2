@@ -8,10 +8,13 @@ private:
     std::string pavarde_;
     double egzaminas_;
     std::vector<double> paz;
+    double rez;
 
 public:
     Studentas() : egzaminas_(0) { }  // default konstruktorius
     Studentas(std::istream& is);
+
+    void clearPazymiai(){paz.clear();}
 
     // geteriai
     inline std::string vardas() const {return vardas_;}
@@ -41,6 +44,7 @@ public:
 
         return mediana;
     }
+    inline double getRez() const {return rez;}
     // seteriai
     void setVardas(const string& vardas){vardas_ = vardas;}
     void setPavarde(const string& pavarde){pavarde_ = pavarde;}
