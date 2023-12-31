@@ -134,7 +134,7 @@ void create_x(int amount, int paz_kiek)
 
 vector <Studentas> read_file(int kiekis, int nd_dydis)
 {
-    ifstream file("../"+to_string(kiekis) + ".txt");
+    ifstream file("../cmake-build-debug/"+to_string(kiekis) + ".txt");
     string line;
 
     vector <Studentas> visi_stud;
