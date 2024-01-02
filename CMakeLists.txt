@@ -17,3 +17,5 @@ target_include_directories(zuba PRIVATE
 
 # O1 optimizacijos lygis
 target_compile_options(zuba PRIVATE -O3)
+
+add_subdirectory(googletest)
