@@ -1,7 +1,24 @@
 #ifndef UNI_CPP_FUNCTIONS_H
 #define UNI_CPP_FUNCTIONS_H
 
-#include <zmogus.h>
+#include "my_lib.h"
+
+class Zmogus{
+protected:
+    string Vardas, Pavarde;
+
+public:
+    Zmogus() {}
+
+    // getteriai
+    string vardas() const {return Vardas;}
+    string pavarde() const {return Pavarde;}
+
+    //setteriai
+    void setVardas(const string &v){Vardas = v;}
+    void setPavarde(const string &p){Pavarde = p;}
+};
+
 
 class Studentas : public Zmogus{
 private:
@@ -93,14 +110,14 @@ public:
         cin>>choice;
         if(choice == "a" || choice == "A")
         {
-                std::random_device rd;
-                std::mt19937 engine(rd());
-                std::uniform_int_distribution<> dist(1, 10);
-                for(int i=0; i<10; i++)
-                {
-                    studentas.paz.push_back((dist(engine)));
-                }
-                studentas.egzaminas_ = dist(engine);
+            std::random_device rd;
+            std::mt19937 engine(rd());
+            std::uniform_int_distribution<> dist(1, 10);
+            for(int i=0; i<10; i++)
+            {
+                studentas.paz.push_back((dist(engine)));
+            }
+            studentas.egzaminas_ = dist(engine);
         }
         else if(choice == "r" || choice == "R")
         {

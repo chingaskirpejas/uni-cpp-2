@@ -2,6 +2,7 @@
 #include "functions.h"
 #include "file_generator.h"
 
+
 int main()
 {
     cout<<"Studentu nuskaitymui is failo spauskite 1"<<endl;

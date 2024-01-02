@@ -10,7 +10,6 @@
 #include <chrono>
 #include <list>
 
-
 using std::list;
 using std::vector;
 using std::string;

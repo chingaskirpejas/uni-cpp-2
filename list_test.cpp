@@ -1,6 +1,5 @@
 #include "list_test.h"
 
-
 void run_list_test(int amount, int paz_kiek)
 {
     cout<<"Testuojamas failas" << amount << ".txt"<<endl;
