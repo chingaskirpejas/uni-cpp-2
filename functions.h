@@ -72,6 +72,7 @@ public:
     // outputo << overloadas
     friend std::ostream& operator<<(std::ostream& out, const Studentas& studentas)
     {
+
         out<<"Vardas Pavarde: "<<studentas.vardas_<<" "<<studentas.pavarde_<<endl;
         out<<"Pazymiai: "<<endl;
         for(const auto& a: studentas.paz)
@@ -80,8 +81,8 @@ public:
         }
         out<<endl;
         out<<"Egzaminas: "<<studentas.egzaminas_<<endl;
-        out<<"Rezultatas: "<<studentas.rez<<endl;
-
+        out<<"Vidurkis: "<<studentas.rez<<endl;
+        out<<"------------------------------------"<<endl;
         return out;
     }
 
@@ -90,16 +91,48 @@ public:
     {
         cout<<"Iveskite varda: ";
         in >> studentas.vardas_;
-        cout<<endl<<"Iveskite pavarde: ";
+        cout<<"Iveskite pavarde: ";
         in>>studentas.pavarde_;
-        cout<<"Iveskite pazymius (atskirtus-tarpais): ";
-        studentas.paz.clear();
-        double grade;
-        while (in>>grade) {
-            studentas.paz.push_back(grade);
+        cout<<"Pasirinkite kaip norite ivesti studento pazymius: autogeneracija(rasykite a), rankiniu budu(rasykite r):"<<endl;
+        string choice;
+        cin>>choice;
+        if(choice == "a" || choice == "A")
+        {
+                std::random_device rd;
+                std::mt19937 engine(rd());
+                std::uniform_int_distribution<> dist(1, 10);
+                for(int i=0; i<10; i++)
+                {
+                    studentas.paz.push_back((dist(engine)));
+                }
+                studentas.egzaminas_ = dist(engine);
         }
-        cout<<endl<<"Iveskite egzamina: ";
-        in>>studentas.egzaminas_;
+        else if(choice == "r" || choice == "R")
+        {
+            cout<<"Ivedus pazymi paspauskite enter"<<endl;
+            cout<<"Pazymiu ivedimui baigti paspauskite q arba enter"<<endl;
+            cout<<"Iveskite studento pazymius: ";
+
+            string paz;
+            cin.ignore();
+            while(true)
+            {
+                getline(cin, paz);
+                if(paz == "q" || paz.empty())
+                {
+                    break;
+                }
+                int in = std::stod(paz);
+                if(in<0 || in>10)
+                {
+                    cout<<"Ivedete bloga skaiciu";
+                    continue;
+                }
+                studentas.paz.push_back(in);
+            }
+            cout<<endl<<"Iveskite egzamina: ";
+            in>>studentas.egzaminas_;
+        }
         studentas.setRez();
 
         return in;
