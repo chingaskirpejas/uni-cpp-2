@@ -10,6 +10,18 @@ protected:
 public:
     Zmogus() {}
 
+    Zmogus(const Zmogus& other)
+            : Vardas(other.Vardas),
+              Pavarde(other.Pavarde) {}
+
+    Zmogus& operator=(const Zmogus& other) {
+        if (this != &other) {
+            Vardas = other.Vardas;
+            Pavarde = other.Pavarde;
+        }
+        return *this;
+    }
+
     // getteriai
     string vardas() const {return Vardas;}
     string pavarde() const {return Pavarde;}
@@ -17,6 +29,8 @@ public:
     //setteriai
     void setVardas(const string &v){Vardas = v;}
     void setPavarde(const string &p){Pavarde = p;}
+
+
 };
 
 
@@ -32,9 +46,24 @@ public:
     // Destructor
     ~Studentas(){}
     // Copy constructor
-    Studentas(const Studentas& other) = default;
-    // Copy assignment operator
-    Studentas& operator=(const Studentas& other) = default;
+    Studentas(const Studentas& other)
+            : Zmogus(other),
+              egzaminas_(other.egzaminas_),
+              paz(other.paz),
+              rez(other.rez) {}
+
+    Studentas& operator=(const Studentas& other) {
+        if (this != &other)
+        {
+
+            static_cast<Zmogus &>(*this) = static_cast<const Zmogus &>(other);
+
+            egzaminas_ = other.egzaminas_;
+            paz = other.paz;
+            rez = other.rez;
+        }
+        return *this;
+    }
 
     void clearPazymiai(){paz.clear();}
 
