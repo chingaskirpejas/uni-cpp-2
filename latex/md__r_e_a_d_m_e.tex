@@ -1,0 +1,134 @@
+\chapter{Pirma užduotis (v1.5)}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{Pirma užduotis (v1.5)@{Pirma užduotis (v1.5)}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+
+\begin{DoxyEnumerate}
+\item Šioje programoje naudojami duomenys susije su studentais -\/ {\itshape vardas, pavarde, pažymiai, egzamino įvertinimas}
+\item Vartotojas turi keturias parinktis darbui su duomenimis\+:
+\begin{DoxyItemize}
+\item Duomenų įvedimas ranka
+\item Duomenų automatinis generavimas (nerašant į failą)
+\item Duomenų nuskaitymas iš failo
+\item Failų su duomenimis generavimas
+\end{DoxyItemize}
+\item Duomenų išvedimo į ekraną metu bus rodomi studento vardas, {\bfseries{pavardė bei galutinis rezultatas}}, {\itshape jei vartotojas pasirenka duomenų įvedimą ranka turėtų būt papildomai nurodoma pagal kokius kriterijus išvesti duomenis ({\bfseries{vidurkis}} arba {\bfseries{mediana}})}
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{Programos veikimo analizė}{Programos veikimo analizė}}\label{md__r_e_a_d_m_e_autotoc_md1}
+Programos veikimas buvo analizuojamas penkiais skirtingais failų dydžiais (failo pavadinime nurodytas studentų skaičius faile).~\newline
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1000.txt}
+\DoxyCodeLine{10000.txt}
+\DoxyCodeLine{100000.txt}
+\DoxyCodeLine{1000000.txt}
+\DoxyCodeLine{10000000.txt}
+
+\end{DoxyCode}
+ ~\newline
+ Konkrečiai buvo analizuojamas failų su duomenimis generavimas, sugeneruotų duomenų nuskaitymas, rūšiavimas ir galiausiai surašymas į išvesties failus. ~\newline
+ ~\newline
+ Rūšiavimas atliekamas pagal studento galutini rezultatą kuris yra apskaičiuojamas pagal formulę (0.\+4 \texorpdfstring{$\ast$}{*} Namų darbų vidurkis + 0.\+6 \texorpdfstring{$\ast$}{*} Egzamino pažymys). Studentai turintys ~\newline
+ ~\newline
+
+
+{\bfseries{Analizės eiga}} ~\newline
+ Su kiekvienu iš nurodytų failų dydžių atliekami šie veiksmai paeiliui\+:
+\begin{DoxyItemize}
+\item Sukuriamas ir užpildomas failas
+\item Nuskaitomas failo turinys
+\item Failo turinys surūšiuojamas pagal minėtą kriterijų trimis skirtingais budais
+\item Visi rūšiavimo ir nuskaitymo rezultatai išvedami į ekraną
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysubsection{\texorpdfstring{Analizės išvados}{Analizės išvados}}\label{md__r_e_a_d_m_e_autotoc_md2}
+Vector konteinerio atveju ~\newline
+ \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000    }\\\cline{1-6}
+\endhead
+Failo nuskaitymo laikas   &\PBS\centering 0,007 s   &\PBS\centering 0,040 s   &\PBS\centering 0,385 s   &\PBS\centering 4,289 s   &\PBS\centering 39,19 s    \\\cline{1-6}
+Failo išrūšiavimo laikas   &\PBS\centering 0 s   &\PBS\centering 0,005 s   &\PBS\centering 0,021 s   &\PBS\centering 0,437 s   &\PBS\centering 5,135 s    \\\cline{1-6}
+Išrašymo į failus laikas   &\PBS\centering 0,009 s   &\PBS\centering 0,058 s   &\PBS\centering 0,525 s   &\PBS\centering 5,256 s   &\PBS\centering 53,7 s   \\\cline{1-6}
+\end{longtabu}
+
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 2 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 3 strategija    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 2 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 3 strategija    }\\\cline{1-4}
+\endhead
+1000   &\PBS\centering 0 s   &\PBS\centering 0 s   &\PBS\centering 0 s    \\\cline{1-4}
+10000   &\PBS\centering 0,002 s   &\PBS\centering 0,002 s   &\PBS\centering 0,002 s    \\\cline{1-4}
+100000   &\PBS\centering 0,029 s   &\PBS\centering 0,028 s   &\PBS\centering 0,022 s    \\\cline{1-4}
+1000000   &\PBS\centering 0,383 s   &\PBS\centering 0,215 s   &\PBS\centering 0,314 s    \\\cline{1-4}
+10000000   &\PBS\centering 27,580 s   &\PBS\centering 10,363 s   &\PBS\centering 33,330 s   \\\cline{1-4}
+\end{longtabu}
+
+
+List konteinerio atveju ~\newline
+
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{6}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000    }\\\cline{1-6}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 100000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1000000   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 10000000    }\\\cline{1-6}
+\endhead
+Failo nuskaitymo laikas   &\PBS\centering 0,007 s   &\PBS\centering 0,039 s   &\PBS\centering 0,391 s   &\PBS\centering 4,108 s   &\PBS\centering 43,785 s    \\\cline{1-6}
+Failo išrūšiavimo vidutinis laikas   &\PBS\centering 0 s   &\PBS\centering 0,003 s   &\PBS\centering 0,036 s   &\PBS\centering 0,395 s   &\PBS\centering 9,195 s    \\\cline{1-6}
+Išrašymo į failus laikas   &\PBS\centering 0,008 s   &\PBS\centering 0,05 s   &\PBS\centering 0,52 s   &\PBS\centering 5,261 s   &\PBS\centering 55,987 s   \\\cline{1-6}
+\end{longtabu}
+
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 2 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 3 strategija    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 1 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 2 strategija   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 3 strategija    }\\\cline{1-4}
+\endhead
+1000   &\PBS\centering 0,002 s   &\PBS\centering 0,001 s   &\PBS\centering 0 s    \\\cline{1-4}
+10000   &\PBS\centering 0,005 s   &\PBS\centering 0,005 s   &\PBS\centering 0,005 s    \\\cline{1-4}
+100000   &\PBS\centering 0,093 s   &\PBS\centering 0,097 s   &\PBS\centering 0,084 s    \\\cline{1-4}
+1000000   &\PBS\centering 0,595 s   &\PBS\centering 0,548 s   &\PBS\centering 0,234 s    \\\cline{1-4}
+10000000   &\PBS\centering 54,186 s   &\PBS\centering 37,327 s   &\PBS\centering 23,970 s   \\\cline{1-4}
+\end{longtabu}
+~\newline
+ ~\newline
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsection{\texorpdfstring{Analizės rezultatai}{Analizės rezultatai}}\label{md__r_e_a_d_m_e_autotoc_md3}
+Pagal turimus duomenis matome, jog /\texorpdfstring{$\ast$}{*}\+Vector\texorpdfstring{$\ast$}{*}/ konteinerio atveju {\bfseries{antra}} strategija yra efektyvesne su didesniais duomenų kiekiais. Taip pat matome jog /\texorpdfstring{$\ast$}{*}\+List\texorpdfstring{$\ast$}{*}/ konteinerio atveju, efektyviausia strategija yra {\bfseries{trečia}}.\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsection{\texorpdfstring{Flagu testavimas}{Flagu testavimas}}\label{md__r_e_a_d_m_e_autotoc_md4}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{7}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Testuojamas failas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ o1 Vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ o1 List   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ o2 Vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ o2 List   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ o3 Vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ o3 List    }\\\cline{1-7}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Testuojamas failas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ o1 Vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ o1 List   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ o2 Vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ o2 List   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ o3 Vector   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ o3 List    }\\\cline{1-7}
+\endhead
+100000.\+txt   &9 ms   &8 ms   &9 ms   &9 ms   &9 ms   &8 ms    \\\cline{1-7}
+1000000.\+txt   &99 ms   &95 ms   &138 ms   &93 ms   &99 ms   &93 ms   \\\cline{1-7}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysection{\texorpdfstring{Kompiuterio specifikacijos}{Kompiuterio specifikacijos}}\label{md__r_e_a_d_m_e_autotoc_md5}
+CPU\+: Intel Core i5-\/6500 @ 3.\+2\+GHz~\newline
+ GPU\+: Nvidia GTX 1060 3GB~\newline
+ RAM\+: 8gb~\newline
+ Atmintis\+: SSD~\newline
+ 
