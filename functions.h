@@ -69,7 +69,41 @@ public:
 
     void setEgz(const int& egzas){egzaminas_ = egzas;}
 
+    // outputo << overloadas
+    friend std::ostream& operator<<(std::ostream& out, const Studentas& studentas)
+    {
+        out<<"Vardas Pavarde: "<<studentas.vardas_<<" "<<studentas.pavarde_<<endl;
+        out<<"Pazymiai: "<<endl;
+        for(const auto& a: studentas.paz)
+        {
+            out<<a<<" ";
+        }
+        out<<endl;
+        out<<"Egzaminas: "<<studentas.egzaminas_<<endl;
+        out<<"Rezultatas: "<<studentas.rez<<endl;
 
+        return out;
+    }
+
+    // inputo >> overloadas
+    friend std::istream& operator>>(std::istream& in, Studentas& studentas)
+    {
+        cout<<"Iveskite varda: ";
+        in >> studentas.vardas_;
+        cout<<endl<<"Iveskite pavarde: ";
+        in>>studentas.pavarde_;
+        cout<<"Iveskite pazymius (atskirtus-tarpais): ";
+        studentas.paz.clear();
+        double grade;
+        while (in>>grade) {
+            studentas.paz.push_back(grade);
+        }
+        cout<<endl<<"Iveskite egzamina: ";
+        in>>studentas.egzaminas_;
+        studentas.setRez();
+
+        return in;
+    }
 };
 
 list<Studentas> list_inputas();

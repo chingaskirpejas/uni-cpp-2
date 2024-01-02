@@ -1,4 +1,4 @@
-# Pirma užduotis (v1.1)
+# Pirma užduotis (v1.2)
 1. Šioje programoje naudojami duomenys susije su studentais - _vardas, pavarde, pažymiai, egzamino įvertinimas_
 2. Vartotojas turi keturias parinktis darbui su duomenimis:
  	- Duomenų įvedimas ranka
