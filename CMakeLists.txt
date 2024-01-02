@@ -9,6 +9,7 @@ add_executable(zuba
         read_from_file.cpp
         file_generator.cpp
         list_test.cpp
+        zmogus.h
 )
 
 target_include_directories(zuba PRIVATE

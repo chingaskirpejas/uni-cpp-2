@@ -1,11 +1,10 @@
 #ifndef UNI_CPP_FUNCTIONS_H
 #define UNI_CPP_FUNCTIONS_H
 
+#include <zmogus.h>
 
-class Studentas {
+class Studentas : public Zmogus{
 private:
-    std::string vardas_;
-    std::string pavarde_;
     double egzaminas_;
     std::vector<double> paz;
     double rez;
@@ -23,8 +22,6 @@ public:
     void clearPazymiai(){paz.clear();}
 
     // geteriai
-    inline std::string vardas() const {return vardas_;}
-    inline std::string pavarde() const {return pavarde_;}
     inline double egzaminas() const {return egzaminas_;}
     inline double getVidurkis() const{
         float rezultatas=0;
@@ -56,8 +53,6 @@ public:
     inline double getRez() const {return rez;}
 
     // seteriai
-    void setVardas(const string& vardas){vardas_ = vardas;}
-    void setPavarde(const string& pavarde){pavarde_ = pavarde;}
     void setPazymiai(const vector<double>& pazymiai){
         paz = pazymiai;
     }
