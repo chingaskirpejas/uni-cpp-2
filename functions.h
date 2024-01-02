@@ -13,6 +13,12 @@ private:
 public:
     Studentas() : egzaminas_(0), rez(0) {}
     Studentas(std::istream& is);
+    // Destructor
+    ~Studentas(){}
+    // Copy constructor
+    Studentas(const Studentas& other) = default;
+    // Copy assignment operator
+    Studentas& operator=(const Studentas& other) = default;
 
     void clearPazymiai(){paz.clear();}
 
@@ -53,7 +59,6 @@ public:
     void setVardas(const string& vardas){vardas_ = vardas;}
     void setPavarde(const string& pavarde){pavarde_ = pavarde;}
     void setPazymiai(const vector<double>& pazymiai){
-//        sort(pazymiai.begin(), pazymiai.end());
         paz = pazymiai;
     }
     void setRez()
@@ -64,7 +69,7 @@ public:
 
     void setEgz(const int& egzas){egzaminas_ = egzas;}
 
-    ~Studentas(){}
+
 };
 
 list<Studentas> list_inputas();
