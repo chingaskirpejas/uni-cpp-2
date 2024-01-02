@@ -82,7 +82,6 @@ list<Studentas> list_inputas()
 {
     Studentas laik;
     list<Studentas> studentai;
-//    list<double> pazymiai;
     int studentu_sk;
     cout<<"Iveskite studentu skaiciu: ";
     cin>>studentu_sk;
@@ -95,26 +94,6 @@ list<Studentas> list_inputas()
     for(int i=0; i<studentu_sk; i++)
     {
         cin >> laik;
-//        string vard, pav;
-//        cout<<"Studento vardas ir pavarde: ";
-//        cin>> vard >> pav;
-//        laik.setVardas(vard);
-//        laik.setPavarde(pav);
-//        cout<<"Pasirinkite kaip norite ivesti studento pazymius: autogeneracija(rasykite a), rankiniu budu(rasykite r):"<<endl;
-//        string choice;
-//        cin>>choice;
-//        if(choice == "a" || choice == "A")
-//        {
-//            random_input(laik);
-//
-//        }
-//        else if(choice == "r" || choice == "R") {
-//            manual_input(laik);
-//            string egzas;
-//            cout<<"Iveskite egzamina: ";
-//            cin>>egzas;
-//            laik.setEgz(std::stod(egzas));
-//        }
         studentai.push_back(laik);
         laik.clearPazymiai();
     }
