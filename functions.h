@@ -14,11 +14,29 @@ public:
     Studentas() : egzaminas_(0), rez(0) {}
     Studentas(std::istream& is);
     // Destructor
-    ~Studentas(){}
+    ~Studentas() {}
+
     // Copy constructor
-    Studentas(const Studentas& other) = default;
+    Studentas(const Studentas& other)
+            : vardas_(other.vardas_),
+              pavarde_(other.pavarde_),
+              egzaminas_(other.egzaminas_),
+              paz(other.paz),
+              rez(other.rez) {
+    }
+
     // Copy assignment operator
-    Studentas& operator=(const Studentas& other) = default;
+    Studentas& operator=(const Studentas& other) {
+        if (this != &other) {
+            vardas_ = other.vardas_;
+            pavarde_ = other.pavarde_;
+            egzaminas_ = other.egzaminas_;
+            paz = other.paz;
+            rez = other.rez;
+        }
+        return *this;
+    }
+
 
     void clearPazymiai(){paz.clear();}
 
