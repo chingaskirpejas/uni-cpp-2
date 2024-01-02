@@ -68,7 +68,7 @@ public:
     friend std::ostream& operator<<(std::ostream& out, const Studentas& studentas)
     {
 
-        out<<"Vardas Pavarde: "<<studentas.vardas_<<" "<<studentas.pavarde_<<endl;
+        out<<"Vardas Pavarde: "<<studentas.Vardas<<" "<<studentas.Pavarde<<endl;
         out<<"Pazymiai: "<<endl;
         for(const auto& a: studentas.paz)
         {
@@ -85,9 +85,9 @@ public:
     friend std::istream& operator>>(std::istream& in, Studentas& studentas)
     {
         cout<<"Iveskite varda: ";
-        in >> studentas.vardas_;
+        in >> studentas.Vardas;
         cout<<"Iveskite pavarde: ";
-        in>>studentas.pavarde_;
+        in>>studentas.Pavarde;
         cout<<"Pasirinkite kaip norite ivesti studento pazymius: autogeneracija(rasykite a), rankiniu budu(rasykite r):"<<endl;
         string choice;
         cin>>choice;
