@@ -1,4 +1,4 @@
-# Pirma užduotis (v2.0)
+# Antra užduotis (v2.0)
 1. Šioje programoje naudojami duomenys susije su studentais - _vardas, pavarde, pažymiai, egzamino įvertinimas_
 2. Vartotojas turi keturias parinktis darbui su duomenimis:
  	- Duomenų įvedimas ranka
